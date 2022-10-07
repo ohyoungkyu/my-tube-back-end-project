@@ -1,8 +1,7 @@
-
 function App() {
   return (
-    <div>
-      
+    <div className="bg-red-500">
+      tailwind<button className="btn">Button</button>
     </div>
   );
 }
