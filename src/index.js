@@ -15,7 +15,7 @@ root.render(
           <Link to="/">App</Link>
         </span>
         <span className="btn">
-          <Link to="About">About</Link>
+          <Link to="About/1">About</Link>
         </span>
         <span className="btn">
           <Link to="/Home">Home</Link>
@@ -23,7 +23,7 @@ root.render(
       </div>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="/about" element={<About />}></Route>
+        <Route path="/about/:id" element={<About />}></Route>
         <Route path="/home" element={<Home />}></Route>
       </Routes>
       <App />
