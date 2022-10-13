@@ -11,6 +11,7 @@ const Join = () => {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
+          try{
           const data = await axios({
             url: `${BACKEND_URL}/user/join`,
             method: "POST",
@@ -20,8 +21,14 @@ const Join = () => {
                 password,
             },
           });
-          console.log(data);
-          console.log(username,email,password);
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          alert("회원가입 성공");
+        } catch(e) {
+          console.log(e);        
+          alert("회원가입 실패");  
+        }              
         }}
         className="flex flex-col w-60 items-start p-4"
       >
