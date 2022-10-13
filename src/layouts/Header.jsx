@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const isLogined = false;
   return (
     <header>
       <div className="flex justify-between navbar bg-base-100 border-b shadow-md">
@@ -27,33 +28,46 @@ const Header = () => {
           </div>
         </div>
         <div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-              <div class="w-24 rounded-full">
-                <img src="https://placeimg.com/192/192/people" />
+          {isLogined ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-24 rounded-full">
+                  <img src="https://placeimg.com/192/192/people" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <div>
+                    <Link to="/about/3">Profile</Link>
+                  </div>
+                </li>
+                <li>
+                  <a>Setting</a>
+                </li>
+                <li>
+                  <div
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </div>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="flex gap-4">
+              <div>
+                <Link to="/join">회원가입</Link>
               </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <div>
-                  <Link to="/about/3">Profile</Link>
-                </div>
-              </li>
-              <li>
-                <a>Setting</a>
-              </li>
-              <li>
-                <div onClick={() => {
-                  navigate("/");
-                }}>
-                  Logout
-                </div>
-              </li>
-            </ul>
-          </div>
+              <div className="mr-2">
+                <Link to="/login">로그인</Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>
