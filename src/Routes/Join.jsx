@@ -1,24 +1,64 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { BACKEND_URL } from "../Utils";
 
 const Join = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div>
       <form
-        onSubmit={(e) => {
-          e.preventDefault();        
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const data = await axios({
+            url: `${BACKEND_URL}/user/join`,
+            method: "POST",
+            data: {
+                username,
+                email,
+                password,
+            },
+          });
+          console.log(data);
+          console.log(username,email,password);
         }}
         className="flex flex-col w-60 items-start p-4"
       >
         <div>회원가입</div>
 
         <div className="mt-4">email을 입력해주세요</div>
-        <input type="email" className="w-full border-2 border-black" />
+        <input
+          type="email"
+          className="w-full border-2 border-black"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value)
+          }}
+        />
 
         <div className="mt-4">nickname을 입력해주세요</div>
-        <input type="text" className="w-full border-2 border-black" />
+        <input
+          type="text"
+          className="w-full border-2 border-black"
+          placeholder="Nickname"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value)
+          }}
+        />
 
         <div className="mt-4">password를 입력해주세요</div>
-        <input type="password" className="w-full border-2 border-black" />
+        <input
+          type="password"
+          className="w-full border-2 border-black"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value)
+          }}
+        />
         <button type="submit" className="btn btn-sm ml-auto mt-4">
           전송
         </button>
