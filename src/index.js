@@ -9,6 +9,7 @@ import Login from "./Routes/Login";
 import { RecoilRoot } from "recoil";
 import UserDetail from "./Routes/users/UserDetail";
 import Studio from "./Routes/studio/Studio";
+import AuthRoutes from "./auth/AuthRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,11 +18,13 @@ root.render(
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/about/:id" element={<About />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route element={<AuthRoutes />}>
+          <Route path="/about/:id" element={<About />}></Route>
           <Route path="/users/:id" element={<UserDetail />}></Route>
           <Route path="/studio/*" element={<Studio />}></Route>
+          </Route>
         </Routes>
       </Router>
     </RecoilRoot>
