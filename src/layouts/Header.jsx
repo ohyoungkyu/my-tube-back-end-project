@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { userState } from "../recoil";
+import { useRecoilState } from "recoil";
 
 const Header = () => {
   const navigate = useNavigate();
-  const isLogined = false;
+  const [user, setUser] = useRecoilState(userState);
   return (
     <header>
       <div className="flex justify-between navbar bg-base-100 border-b shadow-md">
@@ -28,7 +30,7 @@ const Header = () => {
           </div>
         </div>
         <div>
-          {isLogined ? (
+          {user ? (
             <div className="dropdown dropdown-end">
               <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
                 <div class="w-24 rounded-full">
@@ -50,6 +52,7 @@ const Header = () => {
                 <li>
                   <div
                     onClick={() => {
+                      setUser(null);
                       navigate("/");
                     }}
                   >
