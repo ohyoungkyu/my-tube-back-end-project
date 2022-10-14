@@ -31,35 +31,43 @@ const Header = () => {
         </div>
         <div>
           {user ? (
-            <div className="dropdown dropdown-end">
-              <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-                <div class="w-24 rounded-full">
-                  <img src="https://placeimg.com/192/192/people" />
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <div>
-                    <Link to={`/users/${user.id}`}>Profile</Link>
+            <div className="flex items-center">
+              <div className="dropdown dropdown-end">
+                <Link to={`/studio/channel/${user.id}`} className="mr-4 mt-2">
+                  <i className="fi fi-rr-video-plus text-3xl"></i>
+                </Link>
+                <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
+                  <div class="w-10 rounded-full">
+                    <img
+                      src="https://placeimg.com/80/80/people"
+                      alt="profile"
+                    />
                   </div>
-                </li>
-                <li>
-                  <a>Setting</a>
-                </li>
-                <li>
-                  <div
-                    onClick={() => {
-                      setUser(null);
-                      navigate("/");
-                    }}
-                  >
-                    Logout
-                  </div>
-                </li>
-              </ul>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <div>
+                      <Link to={`/users/${user.id}`}>Profile</Link>
+                    </div>
+                  </li>
+                  <li>
+                    <a>Setting</a>
+                  </li>
+                  <li>
+                    <div
+                      onClick={() => {
+                        setUser(null);
+                        navigate("/");
+                      }}
+                    >
+                      Logout
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           ) : (
             <div className="flex gap-4">
