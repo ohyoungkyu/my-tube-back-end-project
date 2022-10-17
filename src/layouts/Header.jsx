@@ -36,8 +36,8 @@ const Header = () => {
                 <Link to={`/studio/channel/${user.id}`} className="mr-4 mt-2">
                   <i className="fi fi-rr-video-plus text-3xl"></i>
                 </Link>
-                <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-                  <div class="w-10 rounded-full">
+                <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
                     <img
                       src="https://placeimg.com/80/80/people"
                       alt="profile"
