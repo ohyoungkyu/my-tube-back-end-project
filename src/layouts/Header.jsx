@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { userState } from "../recoil";
+import { modalActiveState, userState } from "../recoil";
 import { useRecoilState } from "recoil";
 
 const Header = () => {
   const navigate = useNavigate();
   const [user, setUser] = useRecoilState(userState);
+  const [active, setActive] = useRecoilState(modalActiveState);
+
   return (
     <header>
       <div className="flex justify-between navbar bg-base-100 border-b shadow-md">
@@ -33,11 +35,17 @@ const Header = () => {
           {user ? (
             <div className="flex items-center">
               <div className="dropdown dropdown-end">
-                <Link to={`/studio/channel/${user.id}`} className="mr-4 mt-2">
+                <Link
+                  to={`/studio/channel/${user.id}`}
+                  onClick={() => {
+                    setActive(true);
+                  }}
+                  className="mr-4 mt-2"
+                >
                   <i className="fi fi-rr-video-plus text-3xl"></i>
                 </Link>
-                <label tabIndex="0" class="btn btn-ghost btn-circle avatar">
-                  <div class="w-10 rounded-full">
+                <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
                     <img
                       src="https://placeimg.com/80/80/people"
                       alt="profile"
